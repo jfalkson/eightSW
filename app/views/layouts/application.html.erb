@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>8sw</title>
+
+<title>  8sw</title>
+<%= favicon_link_tag '/favicon.ico' %> 
 <%= stylesheet_link_tag "application", media: "all",
     "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -14,10 +16,12 @@
 </div>
 <div id="columns">
 <div id="side"> <ul>
-<li><a href="http://www....">Home</a></li>
-<li><a href="http://www....">Log-in</a></li>
-<li><a href="http://www..../faq">Questions</a></li> 
-<li><a href="static/contact">Contact</a></li>
+<li><a href=/>Home</a></li>
+<li> <%=link_to "Log-in", login_path %> </li> 
+<li> <%=link_to "Register", new_user_path %> </li> 
+<li> <%=link_to "Questions", questions_path %> </li> 
+
+<li> <%=link_to "Contact", contact_path %> </li>
 </ul> </div>
 <div id="main"> 
 <%= yield %>
@@ -25,3 +29,13 @@
   </div>
 </body>
 </html>
+
+<!--  REMARKS
+# this link below incorrectly links to the public folder
+# want it to link to static/contact
+# <li><a href=contact_url">Contact</a></li> # 
+Thus we rely on ruby's link_to tool instead
+-- >
+
+<!-- #use rake routes to find path to name in this 
+ruby link tool# -->

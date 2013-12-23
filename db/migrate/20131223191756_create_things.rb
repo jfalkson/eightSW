@@ -8,5 +8,7 @@ class CreateThings < ActiveRecord::Migration
 
       t.timestamps
     end
+    #might not be right
+    add_index :things, :user_id
   end
 end
