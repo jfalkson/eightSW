@@ -20,8 +20,24 @@
 <li> <%=link_to "Log-in", login_path %> </li> 
 <li> <%=link_to "Register", new_user_path %> </li> 
 <li> <%=link_to "Questions", questions_path %> </li> 
-
 <li> <%=link_to "Contact", contact_path %> </li>
+<li> <%= link_to 'Recommendations', things_path %> </li> 
+<% if session[:user_id] %> 
+<%= button_to 'Logout', logout_path, method: :delete %> 
+<% end %>
+</ul>
+
+
+
+<ul>
+
+
+
+
+
+
+
+
 </ul> </div>
 <div id="main"> 
 <%= yield %>

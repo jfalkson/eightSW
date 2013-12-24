@@ -1,3 +1,10 @@
 <!-- ##Interface for site administrators## -->
+
 <h1>Welcome</h1> It's <%= Time.now %>
 We have <%= pluralize(@total_users, "user") %>.
+
+<!-- we only let the admins see & possible delete all the users -->
+
+<div id="side">
+<li><%= link_to 'Users', users_path %></li> 
+</div>

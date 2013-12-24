@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /users
+  skip_before_action :authorize
+  before_action :admin, only: [:destroy,:edit,:update]
+  
+  
+  
+ # GET /users
   # GET /users.json
+ ##extract the user name 
+ 
+
+
   def index
-    @users = User.order(:name)
+  ##include all things associated with user to 
+  ##use a join instead of having an n+1 query
+  ##maximize big O value
+    @users = User.order(:name).includes(:things).all
   end
 
   # GET /users/1
@@ -19,17 +30,19 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  @username=User.find_by(name: params[:name])
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @username = User.find_by(name: params[:name])
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to users_url, 
-        notice: "User #{@user.name} User was successfully created." }
+        notice: "User #{@user.name} User was successfully created. Please login to use the site" }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
