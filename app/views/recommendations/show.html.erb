@@ -1,5 +1,5 @@
-<h4>All your recommendations are below</h4>
-<%= link_to "Add another recommendation", recommendations_new_path %>
+<h4>Recommendation</h4>
+<%= link_to "Add another recommendation", new_recommendation_path %>
 
 <table>
   <thead>
@@ -13,16 +13,14 @@
   </thead>
 
   <tbody>
-      <% @recs.each do |rec| %>
       <tr>
-        <td><%= rec.rec_type %></td>
-        <td><%= rec.link %></td>
-        <td> <%= rec.rec_description %> </td.>
+        <td><%= @recs.rec_type %></td>
+        <td><%= @recs.link %></td>
+        <td> <%= @recs.rec_description %> </td>
         </tr>
-<% end %>
 
   </tbody>
 </table>
-<%= will_paginate @recs %>
+
 
 

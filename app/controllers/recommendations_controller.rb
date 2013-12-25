@@ -3,8 +3,12 @@ class RecommendationsController < ApplicationController
 
  
   def show
-@recs = Recommendation.paginate( :per_page => 2, :page => params[:page])
+@recs = Recommendation.find(params[:id])
   end
+
+def index
+@recs = Recommendation.paginate( :per_page => 2, :page => params[:page])
+end
 
 def new
  @recommendation=Recommendation.new
