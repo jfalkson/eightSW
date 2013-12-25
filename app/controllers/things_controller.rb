@@ -1,8 +1,6 @@
 class ThingsController < ApplicationController
   before_action :set_thing, only: [:show, :update, :destroy]
-  skip_before_action :authorize
-  #non admins can only show and create
-  skip_before_action :admin, only: [:show, :create] 
+
   # GET /things
   # GET /things.json
   def index

@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize
-  before_action :admin, only: [:destroy,:edit,:update]
   
   
   
