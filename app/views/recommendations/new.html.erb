@@ -1,0 +1,23 @@
+<h4>Create a new recommendation</h4>
+
+
+<%= form_for @recommendation, url: {action: "create"} do |f| %>
+    <% if @recommendation.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
+	<% end %> 
+	  
+  <div><%= f.label "recommendation category"%><br />
+  <%= f.text_field :rec_type %></div>
+  
+  <div><%= f.label "Description" %><br />
+  <%= f.text_field :rec_description %></div>
+
+  <div><%= f.label "Link" %><br />
+  <%= f.text_field :link %></div>
+
+  <div> <%= f.submit "Submit Recommendation" %></div>
+<% end %>
+
+
+

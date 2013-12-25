@@ -12,7 +12,8 @@ gem "twitter-bootstrap-rails"
 #user authentication framework
 gem 'devise'
 
-
+## Gemfile for Rails 3, Rails 4, Sinatra, and Merb
+gem 'will_paginate', '~> 3.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

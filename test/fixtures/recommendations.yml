@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user_id: 
-  rec_type: 
-  rec_description: 
+  user_id: 1
+  rec_type: MyString
+  rec_description: MyString
   link: MyString
 
 two:
-  user_id: 
-  rec_type: 
-  rec_description: 
+  user_id: 1
+  rec_type: MyString
+  rec_description: MyString
   link: MyString
