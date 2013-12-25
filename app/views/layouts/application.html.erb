@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 
-    <meta charset="utf-8">
+    <%= javascript_include_tag 'rails' %>    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "8sw" %></title>
@@ -29,6 +29,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/users/sign_in">Eight Spoked Wheel</a>
+
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "Identity Hub", "/path1"  %></li>
@@ -37,6 +38,10 @@
               <li><%= link_to "Literature", "/path3"  %></li>
               <li><%= link_to "Travel", "/path3"  %></li>
               <li><%= link_to "Health", "/path3"  %></li>
+            <% if user_signed_in? %> 
+              <li> Signed in as <%= current_user.email %> </li>
+              <li><%= link_to "Log-out", destroy_user_session_path, method: :delete %></li>
+            <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -54,9 +59,8 @@
 <li> <%=link_to "Questions", questions_path %> </li> 
 <li> <%=link_to "Contact", contact_path %> </li>
 <li> <%= link_to 'Recommendations', things_path %> </li> 
-<% if session[:user_id] %> 
-<%= button_to 'Logout', destroy_user_session_path, method: :delete %> 
-<% end %>
+
+
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

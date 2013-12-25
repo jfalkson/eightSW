@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  has_secure_password
-  has_many :things, dependent: :destroy
+  #attr_accessible :profiles_attributes
+  has_many :recommendations, dependent: :destroy
 
 
 
