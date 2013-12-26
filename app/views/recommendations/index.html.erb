@@ -18,7 +18,27 @@
         <td><%= rec.rec_type %></td>
         <td><%= rec.link %></td>
         <td> <%= rec.rec_description %> </td>
-       <td> <%= link_to "comments", recommendation_path(rec) %> </td>
+       <td> <%= link_to "comments", recommendation_path(rec) %> 
+       </td>
+         <td>
+    <% if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => true).present? %>
+    *
+  <% else %>
+    <%= link_to "+", votes_path(:vote => {:recommendation_id => rec.id, :up => true}), :method => :post %>
+  <% end %>
+  		 </td>
+  		 
+  <td>
+    <% if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => false).present? %>
+    *
+  <% else %>
+    <%= link_to "-", votes_path(:vote => {:recommendation_id => rec.id, :up => false}), :method => :post %>
+  <% end %>
+  		 </td>		 
+       
+       <td>
+       Votes: <%= rec.votes.where(:up => true).count - rec.votes.where(:up => false).count %>
+       </td>
         </tr>
 <% end %>
 
