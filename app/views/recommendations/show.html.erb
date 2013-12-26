@@ -19,8 +19,40 @@
         <td> <%= @recs.rec_description %> </td>
         </tr>
 
+
   </tbody>
 </table>
 
+
+
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+   
+    <%= f.text_area :message, :placeholder => "Add a comment" %>
+    <%= f.hidden_field :recommendation_id, :value => @recs.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Comments:<h2>
+<div>
+  <% @recs.comments.each do |comment| %>
+    <p><%= comment.message %></p>
+  <% end %>
+</div>
 
 

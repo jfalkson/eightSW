@@ -1,9 +1,10 @@
 class RecommendationsController < ApplicationController
- 
+before_filter :authenticate_user!, :except => [:index, :show] 
 
  
   def show
 @recs = Recommendation.find(params[:id])
+@comment= Comment.new
   end
 
 def index
