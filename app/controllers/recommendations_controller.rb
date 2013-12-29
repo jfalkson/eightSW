@@ -8,7 +8,14 @@ before_filter :authenticate_user!, :except => [:index, :show]
   end
 
 def index
+##adding new if then statement to add search functionality
+## to the website
+if params[:search]
+@recs = Recommendation.search(params[:search]).order("created_at DESC").paginate( :per_page => 2, :page => params[:page])
+else
+
 @recs = Recommendation.paginate( :per_page => 2, :page => params[:page])
+end
 end
 
 def new

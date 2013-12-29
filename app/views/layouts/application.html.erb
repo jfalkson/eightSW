@@ -29,7 +29,10 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/recommendations">Eight Spoked Wheel</a>
-
+<%= form_tag(recommendations_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Recommendation" %>
+<%= submit_tag "Search" %>
+<% end %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "Identity Hub", "/path1"  %></li>
