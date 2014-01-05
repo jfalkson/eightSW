@@ -6,6 +6,11 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+group :test do
+  gem 'database_cleaner'
+  gem 'capybara', '~> 1.1.2'
+end
+
 #facilitates creation of good css/html designs
 gem "twitter-bootstrap-rails"
 

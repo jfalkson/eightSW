@@ -4,11 +4,12 @@
 <table>
   <thead>
     <tr>
-      <th>Category</th>
-      <th>Link</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
+      <th><%= sortable "rec_type", "Category" %></th>
+      <th>link</th>
+      <th>Rec Description</th>
+      <th>View Comments</th>
+      <!-- need to fix this -->
+      <th>Upvote/Downvote<%= sortable "rec.votes.where(:up => true).count - rec.votes.where(:up => false).count", "vote ct" %></th>
     </tr>
   </thead>
 

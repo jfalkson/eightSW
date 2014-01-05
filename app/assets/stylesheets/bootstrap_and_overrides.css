@@ -5,3 +5,142 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+  
+.navbar-inner {
+   /*  background-image: linear-gradient(to bottom, #1A1A1A, #5F5F5F); */
+   background-image: linear-gradient(to bottom, #428bca , #428bca );
+    background-repeat: repeat-x;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  color:white;
+  background-color:#B2F0FF;
+}
+
+.navbar .nav > li > a {
+    color: white;
+    float: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-shadow: 0 0px 0 #B2F0FF;
+}
+
+.navbar .brand {
+  display: block;
+  float: left;
+  padding: 10px 20px 10px;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 200;
+  color: white;
+  text-shadow: 0 0px 0 #B2F0FF;
+}
+
+ .navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+
+
+.navbar-text {
+  margin-bottom: 0;
+  line-height: 40px;
+  color: white;
+} 
+
+
+
+.navbar-link {
+  color: white;
+}
+
+
+.navbar-link:hover {
+  color: white;
+}  
+
+
+
+.well.sidebar-nav {
+
+ background-image: linear-gradient(to bottom, #428bca , #428bca ); 
+
+}
+
+li.nav-header {
+
+color:white;
+
+}
+
+.nav-list>li>a, .nav-list .nav-header
+
+{
+color:white;
+}
+
+/* dont use important code in practice 
+html, body {
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        
+        background-color: #EEE !important;
+} 
+*/
+
+/* commented out classes I might need later to override default bootstrap themes */
+
+
+/*
+.dropdown-menu li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: white;
+  white-space: nowrap;
+}
+
+*/
+
+
+/*
+.dropdown-menu {
+    background-clip: padding-box;
+    background-color: red;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    float: left;
+    left: 0;
+    list-style: none outside none;
+    margin: 2px 0 0;
+    min-width: 160px;
+    padding: 5px 0;
+    position: absolute;
+    top: 100%;
+    z-index: 1000;
+}
+
+.btn-group.open .btn.dropdown-toggle {
+  background-color: red;
+}
+
+.btn-group.open .btn.dropdown-toggle {
+  background-color:lime;
+} */

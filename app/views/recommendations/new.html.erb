@@ -8,7 +8,8 @@
 	<% end %> 
 	  
   <div><%= f.label "recommendation category"%><br />
-  <%= f.text_field :rec_type %></div>
+  <!-- we call rec_types from the static list in the model -->
+  <%= f.select(:rec_type, Recommendation::REC_TYPES) %></div>
   
   <div><%= f.label "Description" %><br />
   <%= f.text_field :rec_description %></div>

@@ -5,6 +5,7 @@ has_many :votes
 #validates :link, presence: true
 #validates :rec_type, presence: true
 
+REC_TYPES = ["Clothing", "Accessories", "Health","Literature","Travel"]
 
 def self.search(query)
 # where(:title, query) -> This would return an exact match of the query

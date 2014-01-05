@@ -17,10 +17,16 @@
 
 
     <%= javascript_include_tag "application" %>
+
+  
   </head>
   <body>
 
+
     <div class="navbar navbar-fluid-top">
+      
+    
+
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -28,23 +34,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
+        
           <a class="brand" href="/recommendations">Eight Spoked Wheel</a>
-<%= form_tag(recommendations_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Recommendation" %>
-<%= submit_tag "Search" %>
-<% end %>
+
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Identity Hub", "/path1"  %></li>
-              <li><%= link_to "Clothing", "/path2"  %></li>
-              <li><%= link_to "Accessories", "/path3"  %></li>
-              <li><%= link_to "Literature", "/path3"  %></li>
-              <li><%= link_to "Travel", "/path3"  %></li>
-              <li><%= link_to "Health", "/path3"  %></li>
+              <li><%= link_to "Identity Hub", "/"  %></li>
+              <li><%= link_to "Clothing", "/clothing"  %></li>
+              <li><%= link_to "Accessories", "/accessories"  %></li>
+              <li><%= link_to "Literature", "/literature"  %></li>
+              <li><%= link_to "Travel", "/travel"  %></li>
+              <li><%= link_to "Health", "/health"  %></li>
             <% if user_signed_in? %> 
-              <li> Signed in as <%= current_user.email %> </li>
-              <li><%= link_to "Log-out", destroy_user_session_path, method: :delete %></li>
+            
+           <li> <%= menu_text "Signed in as #{current_user.email} " %> </li>
+            <li>  <%= link_to "Log-out", destroy_user_session_path, method: :delete %> </li>
+            
             <% end %>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -67,11 +74,28 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
+    <div class="span3">
+
+  	<%= form_tag(recommendations_path, :method => "get", id: "search-form") do %>
+	<%= text_field_tag :search, params[:search], placeholder: "Search Recommendations" %>
+
+	<%= submit_tag "Search" %>
+
+	<% end %>
+	</div>
+
+
+
         <div class="span9">
+
+
           <%= bootstrap_flash %>
+
+
           <%= yield %>
         </div>
       </div><!--/row-->
+
 
       <footer>
         <p>&copy; 8sw 2013</p>
