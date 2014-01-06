@@ -1,20 +1,23 @@
 <h4>All your recommendations are below</h4>
 <%= link_to "Add another recommendation", new_recommendation_path %>
 
-<table>
+<table id="recommendations" class="display" data-source="<%= recommendations_url(format: "json") %>">
   <thead>
     <tr>
       <th><%= sortable "rec_type", "Category" %></th>
-      <th>link</th>
+      <th>Link</th>
       <th>Rec Description</th>
-      <th>View Comments</th>
-      <!-- need to fix this -->
-      <th>Upvote/Downvote<%= sortable "rec.votes.where(:up => true).count - rec.votes.where(:up => false).count", "vote ct" %></th>
+	  <th>Votes</th>
+      <!-- 
+      need to fix this 
+      <th>Upvote/Downvote?</th>
+      <th>Total Votes <%= sortable "rec.votes.where(:up => true).count - rec.votes.where(:up => false).count", "vote ct" %> </th> -->
     </tr>
   </thead>
 
   <tbody>
-      <% @recs.each do |rec| %>
+  <!--
+  <% @recs.each do |rec| %>
       <tr>
         <td><%= rec.rec_type %></td>
         <td><%= rec.link %></td>
@@ -27,9 +30,9 @@
   <% else %>
     <%= link_to "+", votes_path(:vote => {:recommendation_id => rec.id, :up => true}), :method => :post %>
   <% end %>
-  		 </td>
+  		
   		 
-  <td>
+ 
     <% if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => false).present? %>
     *
   <% else %>
@@ -38,13 +41,14 @@
   		 </td>		 
        
        <td>
-       Votes: <%= rec.votes.where(:up => true).count - rec.votes.where(:up => false).count %>
+       <%= rec.votes.where(:up => true).count - rec.votes.where(:up => false).count %>
        </td>
         </tr>
 <% end %>
+-->
 
   </tbody>
 </table>
-<%= will_paginate @recs %>
+<!-- <%= will_paginate @recs %> -->
 
 

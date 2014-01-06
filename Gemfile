@@ -6,6 +6,12 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+#data-tables, feature used by amaxon.com
+
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
+gem 'jquery-ui-rails'
+
 group :test do
   gem 'database_cleaner'
   gem 'capybara', '~> 1.1.2'

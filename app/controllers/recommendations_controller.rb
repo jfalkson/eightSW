@@ -8,6 +8,9 @@ helper_method :sort_column, :sort_direction
   end
 
 def index
+
+
+
 ##adding new if then statement to add search functionality
 ## to the website
 if params[:search]
@@ -16,6 +19,11 @@ else
 
 @recs = Recommendation.order(sort_column + " " + sort_direction).paginate( :per_page => 2, :page => params[:page])
 end
+
+  respond_to do |format|
+    format.html
+    format.json { render json: RecommendationsDatatable.new(view_context) }
+  end 
 end
 
 def new
