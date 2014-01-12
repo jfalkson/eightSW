@@ -1,8 +1,10 @@
 class RecommendationsDatatable
   ##delegating helper methods to this class
   ##h is the html escape method used to prevent hacking
-  delegate :params, :h, :link_to, to: :@view
-
+  delegate :params, :h, :link_to, :current_user, to: :@view
+  include ApplicationHelper
+  include Rails.application.routes.url_helpers
+  
   def initialize(view)
     @view = view
   end
@@ -16,28 +18,44 @@ class RecommendationsDatatable
     }
   end
 
+
 private
 
-##trying to create a method to count the number of upvotes
-def number_of_upvotes
-#  recommendations.find(params[:id]).votes.count
+# right now rec is undefined. 
+#need to figure out how to look at current recommendation id 
+def votelnk(recommendation)
+		rec=recommendation
+        if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => true).present?
+     	"*"
+   		else
+    		link_to '+', votes_path(:vote => {:recommendation_id => rec.id, :up => true}), :method => :post
+   		end
+   		 
+    	if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => false).present? 
+    		"*"     	
+    	else
+      	link_to '-', votes_path(:vote => {:recommendation_id => rec.id, :up => false}), :method => :post
+    	end
 end
-
-
 
 ##map is a way to loop through instead of saying recommendations.each
   def data
     recommendations.map do |recommendation|
       [
+      ##link to is a ruby function, the second argument is the path
+      ##in this case the path leads to a recommendation id
         link_to(recommendation.rec_type, recommendation),
         link_to(recommendation.link,recommendation),
         recommendation.rec_description,
-        #recommendation.find(params[:id]).votes.count
+        recommendation.votes.count,
+        link_to('Add Comment',recommendation),
+        ##when this code below is removed it works fine without an up/down vote option
+		votelnk(recommendation)
       ]
     end
   end
 
-## if products isnt defined right now set it to fetch products
+## if recs isnt defined right now set it to fetch recs
   def recommendations
     @recommendations ||= fetch_recommendations
   end

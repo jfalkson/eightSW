@@ -4,14 +4,15 @@
 <table id="recommendations" class="display" data-source="<%= recommendations_url(format: "json") %>">
   <thead>
     <tr>
-      <th><%= sortable "rec_type", "Category" %></th>
+      <th>Category</th>
       <th>Link</th>
       <th>Rec Description</th>
 	  <th>Votes</th>
-      <!-- 
-      need to fix this 
+      <th>Click to comment</th>
+            
+    
       <th>Upvote/Downvote?</th>
-      <th>Total Votes <%= sortable "rec.votes.where(:up => true).count - rec.votes.where(:up => false).count", "vote ct" %> </th> -->
+    <!--  <th>Total Votes <%= sortable "rec.votes.where(:up => true).count - rec.votes.where(:up => false).count", "vote ct" %> </th> --> 
     </tr>
   </thead>
 
