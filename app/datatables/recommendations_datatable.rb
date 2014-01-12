@@ -21,8 +21,9 @@ class RecommendationsDatatable
 
 private
 
-# right now rec is undefined. 
-#need to figure out how to look at current recommendation id 
+#need to make this method actually change the votecount#
+#user needs to be able to post
+# right now vote count doesnt change and method doesnt get to second if statement
 def votelnk(recommendation)
 		rec=recommendation
         if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => true).present?
@@ -64,7 +65,7 @@ end
     recommendations = Recommendation.order("#{sort_column} #{sort_direction}")
     recommendations = recommendations.page(page).per_page(per_page)
     if params[:sSearch].present?
-      recommendations = recommendations.where("rec_description like ? OR rec_type like ? OR link like ?", "%#{query}%","%#{query}%","%#{query}%")
+      recommendations = recommendations.where("rec_description like :search OR rec_type like :search OR link like :search", search: "%#{params[:sSearch]}%")
     end
     recommendations
   end
