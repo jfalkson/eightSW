@@ -24,18 +24,22 @@ private
 #need to make this method actually change the votecount#
 #user needs to be able to post
 # right now vote count doesnt change and method doesnt get to second if statement
-def votelnk(recommendation)
+def upvotelnk(recommendation)
 		rec=recommendation
         if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => true).present?
-     	"*"
+     	"you up-voted"
    		else
-    		link_to '+', votes_path(:vote => {:recommendation_id => rec.id, :up => true}), :method => :post
+    		link_to 'click to up-vote', votes_path(:vote => {:recommendation_id => rec.id, :up => true}), :method => :post
    		end
-   		 
+
+end
+
+def downvotelnk(recommendation)
+		rec=recommendation
     	if current_user && current_user.votes.where(:recommendation_id => rec.id, :up => false).present? 
-    		"*"     	
+    		"you down-voted"     	
     	else
-      	link_to '-', votes_path(:vote => {:recommendation_id => rec.id, :up => false}), :method => :post
+      	link_to 'click to down-vote', votes_path(:vote => {:recommendation_id => rec.id, :up => false}), :method => :post
     	end
 end
 
@@ -48,10 +52,10 @@ end
         link_to(recommendation.rec_type, recommendation),
         link_to(recommendation.link,recommendation),
         recommendation.rec_description,
-        recommendation.votes.count,
+        (recommendation.votes.where(:up=>true).count - recommendation.votes.where(:up => false).count),
         link_to('Add Comment',recommendation),
         ##when this code below is removed it works fine without an up/down vote option
-		votelnk(recommendation)
+		upvotelnk(recommendation) + " " + downvotelnk(recommendation)
       ]
     end
   end
