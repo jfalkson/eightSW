@@ -4,7 +4,6 @@ class CreateVotes < ActiveRecord::Migration
       t.integer :user_id
       t.integer :recommendation_id
       t.boolean :up
-
       t.timestamps
     end
   end

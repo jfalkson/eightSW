@@ -8,9 +8,17 @@ before_filter :authenticate_user!, :except => [:index, :show]
     @comment = current_user.comments.create(allowed_params)
   	redirect_to :back
   end
-end
+  
+  
+  def new
+    @comment=Comment.new
+  end
+
+
 
 private
 def allowed_params
-  params.require(:comment).permit(:message, :user_id, :recommendation_id)
+  params.require(:comment).permit(:message, :user_id, :rec_id)
+end
+
 end

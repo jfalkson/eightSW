@@ -11,21 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131226020305) do
+ActiveRecord::Schema.define(version: 20140315223813) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
     t.integer  "recommendation_id"
     t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "products", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "image_url"
-    t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,21 +30,9 @@ ActiveRecord::Schema.define(version: 20131226020305) do
     t.datetime "updated_at"
   end
 
-  create_table "things", force: true do |t|
-    t.integer  "user_id"
-    t.string   "link"
-    t.string   "type"
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "password_digest"
+    t.string   "name",                   default: "", null: false
     t.string   "email",                  default: "", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
